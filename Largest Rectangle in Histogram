@@ -1,0 +1,31 @@
+#include <stack>
+#include <vector>
+#include <deque>
+using namespace std;
+
+int largestRectangle(vector<int> &a) {
+    // Write your code here.
+    int n = a.size();
+    int ans = 0;
+    int i = 0;
+    stack<int> st;
+    // Pushing -1 to mark the beginning of the histogram
+    st.push(-1);
+    while (i < n) {
+        while (st.top() != -1 && a[st.top()] >= a[i]) {
+            // Calculating the area of the rectangle
+            int t = st.top();
+            st.pop();
+            ans = max(ans, a[t] * (i - st.top() - 1));
+        }
+        st.push(i);
+        i++;
+    }
+    // Emptying the stack and calculating area for remaining bars
+    while (st.top() != -1) {
+        int t = st.top();
+        st.pop();
+        ans = max(ans, a[t] * (n - st.top() - 1));
+    }
+    return ans;
+}
