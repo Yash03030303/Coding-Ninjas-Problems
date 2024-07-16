@@ -1,0 +1,15 @@
+#include <bits/stdc++.h> 
+
+using namespace std;
+
+long long candyDistribution(int N, vector<int>& A) {
+    sort(A.begin(), A.end()); // Sort the array in non-decreasing order
+    long long totalCandies = 0;
+    int prevCandies = 0;
+    for (int i = 0; i < N; i++) {
+        int candies = max(A[i], prevCandies + 1); // Ensure each friend gets at least A[i] candies
+        totalCandies += candies;
+        prevCandies = candies;
+    }
+    return totalCandies;
+}
