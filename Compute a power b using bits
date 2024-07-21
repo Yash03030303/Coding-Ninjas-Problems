@@ -1,0 +1,25 @@
+#include<iostream>
+
+using namespace std;
+const int MOD=1000000007;
+long long P(long long a, long long b, long long mod){
+long long result=1;
+while(b>0){
+if(b%2==1){
+result=(result*a)%mod;
+}
+a=(a*a)%mod;
+b =b/2;
+}
+return result;
+}
+int main(){
+int t;
+cin>>t;
+while(t--){
+long long a,b;
+cin>>a>>b;
+cout<<P(a,b,MOD)<<endl;
+}
+return 0;
+}
