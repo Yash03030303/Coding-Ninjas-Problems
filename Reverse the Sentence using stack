@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+void reverse(string str){
+stack<string>st;
+stringstream s(str);
+string word;
+while(s>>word){
+st.push(word);
+}
+bool first=true;
+while(!st.empty()){
+if (!first) {
+cout << " ";
+}
+cout<<st.top();
+st.pop();
+first=false;
+}
+cout<<endl;
+}
+int main(){
+int T;
+cin >> T;
+cin.ignore(); 
+for (int i = 0; i < T; ++i) {
+string str;
+getline(cin, str);
+reverse(str);
+}
+return 0;
+}
