@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+long long generatePalindrome(int k, int intLength) {
+    int halfLength = (intLength + 1) / 2;
+    long long firstHalf = pow(10, halfLength - 1) + k - 1;
+
+    string firstHalfStr = to_string(firstHalf);
+    string secondHalfStr = firstHalfStr;
+    if (intLength % 2 == 1) {
+        secondHalfStr.pop_back(); 
+    }
+    reverse(secondHalfStr.begin(), secondHalfStr.end());
+
+    string palindromeStr = firstHalfStr + secondHalfStr;
+    long long palindrome = stoll(palindromeStr);
+    return palindrome;
+}
+vector<long long> kthPalindrome(vector<int>& queries, int intLength) {
+    vector<long long> answer;
+    int halfLength = (intLength + 1) / 2;
+    long long maxPossibleFirstHalf = pow(10, halfLength) - pow(10, halfLength - 1);
+    for (int q : queries) {
+        if (q > maxPossibleFirstHalf) {
+            answer.push_back(-1);
+        } else {
+            answer.push_back(generatePalindrome(q, intLength));
+        }
+    }
+    return answer;
+}
+int main() {
+    vector<int> queries1 = {1, 2, 3, 4, 5, 90};
+    int intLength1 = 3;
+    vector<long long> result1 = kthPalindrome(queries1, intLength1);
+    for (long long res : result1) {
+        cout << res << " ";
+    }
+    cout << endl;
+    vector<int> queries2 = {2, 4, 6};
+    int intLength2 = 4;
+    vector<long long> result2 = kthPalindrome(queries2, intLength2);
+    for (long long res : result2) {
+        cout << res << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
