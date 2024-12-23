@@ -1,0 +1,36 @@
+class Solution {
+public:
+    bool isNumber(string s) {
+        bool hasNum = false, hasDot = false, hasExp = false;
+        int n = s.size();
+
+        for (int i = 0; i < n; ++i) {
+            char ch = s[i];
+
+            if (isdigit(ch)) {
+                hasNum = true; 
+            } 
+            else if (ch == '+' || ch == '-') {
+                if (i > 0 && s[i - 1] != 'e' && s[i - 1] != 'E') {
+                    return false;
+                }
+            } 
+            else if (ch == '.') {
+                if (hasDot || hasExp) {
+                    return false;
+                }
+                hasDot = true;
+            } else if (ch == 'e' || ch == 'E') {
+                if (hasExp || !hasNum) {
+                    return false;
+                }
+                hasExp = true;
+                hasNum = false; 
+            } else {
+                return false; 
+            }
+        }
+
+        return hasNum;
+    }
+};
