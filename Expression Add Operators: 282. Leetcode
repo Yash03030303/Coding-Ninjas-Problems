@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<string> addOperators(string num, int target) {
+        vector<string> result;
+        if (num.empty()) return result;
+        helper(result, "", num, target, 0, 0, 0);
+        return result;
+    }
+private:
+    void helper(vector<string>& result, string path, string& num, int target, int pos, long currValue, long prevValue) {
+        if (pos == num.size()) {
+            if (currValue == target) {
+                result.push_back(path);
+            }
+            return;
+        }
+        for (int i = pos; i < num.size(); ++i) {
+            if (i != pos && num[pos] == '0') break; 
+            string currStr = num.substr(pos, i - pos + 1);
+            long currNum = stol(currStr);
+
+            if (pos == 0) {
+                helper(result, path + currStr, num, target, i + 1, currNum, currNum);
+            } else {
+                helper(result, path + "+" + currStr, num, target, i + 1, currValue + currNum, currNum);
+                helper(result, path + "-" + currStr, num, target, i + 1, currValue - currNum, -currNum);
+                helper(result, path + "*" + currStr, num, target, i + 1, currValue - prevValue + prevValue * currNum, prevValue * currNum);
+            }
+        }
+    }
+};
