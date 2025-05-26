@@ -3,7 +3,6 @@ public:
     bool isNumber(string s) {
         bool hasNum = false, hasDot = false, hasExp = false;
         int n = s.size();
-
         for (int i = 0; i < n; ++i) {
             char ch = s[i];
 
@@ -30,7 +29,6 @@ public:
                 return false; 
             }
         }
-
         return hasNum;
     }
 };
