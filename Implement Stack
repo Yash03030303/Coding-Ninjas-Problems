@@ -21,6 +21,7 @@ cout << stack.back() << endl;
 stack.pop_back();
 }
 }
+
 }
 return 0;
 }
