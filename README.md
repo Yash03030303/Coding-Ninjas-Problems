@@ -1,1 +1,2 @@
-# Coding-Ninjas-Problems
+# Coding-Ninjas-Problems Solutions
+In Java and C++
