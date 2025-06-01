@@ -6,7 +6,7 @@ vector<int> rotateArray(vector<int>arr, int k) {
     k = k % n;
 
     vector<int>rotated(arr.begin()+k, arr.end());
-    rotated.insert(rotated.end(), arr.begin(), arr.begin()+k);
+    rotated.insert(rotated.end(), arr.begin(), arr.begin() + k);
 
     return rotated;
 
