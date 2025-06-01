@@ -8,6 +8,7 @@ int swap(int n){
   even >>=1;
   return (even | odd);
 }
+
 int main(){
   int t;
   cin>>t;
