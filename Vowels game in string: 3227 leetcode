@@ -1,4 +1,5 @@
 class Solution {
+
 public:
     bool doesAliceWin(string s) {
         for (char c : s) {
