@@ -11,5 +11,6 @@ long long candyDistribution(int N, vector<int>& A) {
         totalCandies += candies;
         prevCandies = candies;
     }
+
     return totalCandies;
 }
