@@ -1,6 +1,7 @@
 #include<iostream>
 
 using namespace std;
+
 const int MOD=1000000007;
 long long P(long long a, long long b, long long mod){
 long long result=1;
