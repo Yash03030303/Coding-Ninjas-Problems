@@ -1,4 +1,5 @@
 class Solution {
+
 public:
     string intToRoman(int num) {
         vector<pair<int, string>> roman = {
@@ -8,6 +9,7 @@ public:
         };
 
         string result = "";
+
         for (auto &[value, symbol] : roman) {
             while (num >= value) {
                 result += symbol;
